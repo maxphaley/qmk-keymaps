@@ -1,8 +1,24 @@
 // Vim-Mode combos
-COMB(weEsc,      KC_ESC,          KC_W, KC_E)
-COMB(sdBspc,     KC_BSPC,         KC_S, KC_D)
-COMB(dfTab,      KC_TAB,          KC_D, KC_F)
-COMB(cvEnt,      KC_ENT,          KC_C, KC_V)
-COMB(uiEsc,      KC_ESC,          KC_U, KC_I)
-COMB(jkCol,      KC_COLN,         KC_J, KC_K)
-COMB(hnEnt,      KC_ENT,          KC_H, KC_N)
+COMB(_esc1,      KC_ESC,          KC_Q, KC_W)
+COMB(_esc2,      KC_ESC,          KC_W, KC_F)
+COMB(_esc3,      KC_ESC,          KC_U, KC_Y)
+COMB(_esc4,      KC_ESC,          KC_Y, KC_SCLN)
+COMB(_bspc,      KC_BSPC,         LALT_T(KC_R), LCTL_T(KC_S))
+COMB(_del,       KC_DEL,          LCTL_T(KC_S), LSFT_T(KC_T))
+COMB(_tab,       KC_TAB,          KC_Z, KC_X)
+COMB(_ent1,      KC_ENT,          KC_C, KC_D)
+COMB(_ent2,      KC_ENT,          KC_H, KC_COMM)
+COMB(_colon1,    KC_COLN,         KC_F, KC_P)
+COMB(_colon2,    KC_COLN,         KC_L, KC_U)
+
+// Bracket combos
+COMB(_lcbr, KC_LCBR, KC_P, KC_B)
+COMB(_rcbr, KC_RCBR, KC_J, KC_L)
+COMB(_lprn, KC_LPRN, LSFT_T(KC_T), KC_G)
+COMB(_rprn, KC_RPRN, KC_M, RSFT_T(KC_N))
+COMB(_lbrc, KC_LBRC, KC_D, KC_V)
+COMB(_rbrc, KC_RBRC, KC_K, KC_H)
+
+//
+COMB(_quot, KC_QUOT, RALT_T(KC_I), RGUI_T(KC_O))
+

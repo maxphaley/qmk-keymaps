@@ -13,10 +13,10 @@
 #define BOOTMAGIC_LITE_COLUMN_RIGHT 4
 
 // Tap-hold configuration for home row mods.
-#define TAPPING_TERM 180
+#define TAPPING_TERM 230
 #define IGNORE_MOD_TAP_INTERRUPT
 // ignore-mod-tap-interrupt is being removed, does it really require hold_on_other_key_press fn => false
-#define PERMISSIVE_HOLD
+// #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 100
 
 // caps word settings

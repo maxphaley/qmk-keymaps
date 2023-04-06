@@ -4,25 +4,56 @@
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h"
 
+#define _BASE 0
+#define _NAV  1
+#define _NUM  2
+#define _SYM  3
+#define _FUNC 4
+#define _MOUSE 5
+#define _MEDIA 6
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-     /*
-      * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-      * │ Q │ W │ E │ R │ T │       │ Y │ U │ I │ O │ P │
-      * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │ A │ S │ D │ F │ G │       │ H │ J │ K │ L │ ; │
-      * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │ Z │ X │ C │ V │ B │       │ N │ M │ , │ . │ / │
-      * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
-      *           ┌───┐                   ┌───┐
-      *           │GUI├───┐           ┌───┤Alt│
-      *           └───┤Bsp├───┐   ┌───┤Ent├───┘
-      *               └───┤   │   │   ├───┘
-      *                   └───┘   └───┘
-      */
-    [0] = LAYOUT_split_3x5_3(
-        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
-        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-                                   KC_LGUI, KC_BSPC, KC_SPC,           KC_SPC,  KC_ENT,  KC_RALT
-    )
+  [_BASE] = LAYOUT_split_3x5_3(
+    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                               KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
+    LCMD_T(KC_A),    LALT_T(KC_R),    LCTL_T(KC_S),    LSFT_T(KC_T),    KC_G,                               KC_M,    RSFT_T(KC_N),    RCTL_T(KC_E),    RALT_T(KC_I),    RGUI_T(KC_O),
+    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                               KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,
+     LT(_MOUSE, KC_ESC), LT(_NAV,KC_SPC), LT(_NUM,KC_TAB),        LT(_SYM, KC_ENT), LT(_MEDIA, KC_BSPC),  LT(_FUNC, KC_DEL)
+  ),
+
+  [_NAV] = LAYOUT_split_3x5_3(
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_AGIN, KC_PSTE, KC_COPY, KC_CUT , KC_UNDO,
+    KC_LCMD, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                            KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, CW_TOGG,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END , KC_INS ,
+                               XXXXXXX, XXXXXXX, XXXXXXX,           KC_ENT, KC_BSPC, KC_DEL
+  ),
+  [_NUM] = LAYOUT_split_3x5_3(
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_LBRC, KC_7   , KC_8   , KC_9   , KC_RBRC,
+    KC_LCMD, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                            KC_EQL , KC_4   , KC_5   , KC_6   , KC_QUOT,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_BSLS, KC_1   , KC_2   , KC_3   , KC_GRV ,
+                               XXXXXXX, XXXXXXX, XXXXXXX,          KC_MINS, KC_0   , KC_DOT
+  ),
+  [_SYM] = LAYOUT_split_3x5_3(
+    KC_LCBR, KC_MINS, KC_GRV , KC_RCBR, KC_EQL ,                            KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,
+    KC_LPRN, KC_BSLS, KC_SLSH, KC_RPRN, KC_ASTR,                            KC_PLUS, KC_DLR , KC_PERC, KC_CIRC, KC_DQUO,
+    KC_LBRC, KC_LABK, KC_RABK, KC_RBRC, KC_PLUS,                            KC_PIPE, KC_EXLM, KC_AT  , KC_HASH, KC_TILD,
+                               KC_PAST, KC_UNDS, KC_PMNS,          XXXXXXX, XXXXXXX, XXXXXXX
+  ),
+  [_FUNC] = LAYOUT_split_3x5_3(
+    KC_F12 , KC_F7  , KC_F8  , KC_F9  , KC_PSCR,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_F11 , KC_F4  , KC_F5  , KC_F6  , KC_SCRL,                            XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LCMD,
+    KC_F10 , KC_F1  , KC_F2  , KC_F3  , KC_PAUS,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                               KC_APP , KC_SPC , KC_TAB ,          XXXXXXX, XXXXXXX, XXXXXXX
+  ),
+  [_MOUSE] = LAYOUT_split_3x5_3(
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_LCMD, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                            KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, XXXXXXX,
+                               XXXXXXX, XXXXXXX, XXXXXXX,          KC_BTN2, KC_BTN1, KC_BTN3
+  ),
+  [_MEDIA] = LAYOUT_split_3x5_3(
+    KC_MRWD, XXXXXXX, XXXXXXX, KC_MFFD, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY,                            XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LCMD,
+    XXXXXXX, KC_MUTE, KC_MUTE, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                               KC_MUTE, KC_MPLY, KC_MSTP,          XXXXXXX, XXXXXXX, XXXXXXX
+  ),
 };
