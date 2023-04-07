@@ -4,6 +4,11 @@
     "maintainer": "maxphaley",
     "bootloader": "atmel-dfu",
     "diode_direction": "COL2ROW",
+    "caps_word": {
+      "enabled": true,
+      "both_shifts_turns_on": true,
+      "idle_timeout": 4000
+    },
     "features": {
         "bootmagic": true,
         "command": false,

@@ -19,10 +19,6 @@
 // #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 100
 
-// caps word settings
-#define CAPS_WORD_IDLE_TIMEOUT 4000
-#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
-
 // combos
 #define COMBO_TERM 50
 
