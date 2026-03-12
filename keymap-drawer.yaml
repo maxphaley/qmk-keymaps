@@ -7,13 +7,13 @@ layers:
     - [Z, X, C, V, B, N, M, ",", ., /]
     - {h: FUN, t: Del}
     - {h: NUM, t: Space}
-    - {h: SYM, t: BSpace}
     - {h: SYM, t: Tab}
+    - {h: SYM, t: BSpace}
     - {h: NAV, t: Enter}
     - {h: MEDIA, t: Esc}
   NUM:
     - ['','','','','','[', 7, 8, 9, ']']
-    - [Gui,Alt,Ctrl,Shift,'','=',4,5,6,;]
+    - [Gui,Alt,Ctrl,Shift,'','=',4,5,6,ScrlLock]
     - ['','','','','',"\\", 1, 2, 3, '`']
     - ['',{type: held},'','-',0,.]
   SYM:
@@ -36,3 +36,8 @@ layers:
     - [RGB, M.Prev, Vol-, M.Next, '', '', Shift, Ctrl, Alt, Gui]
     - ['', '', '', '', '', '','','','','']
     - [Mute,M.Play,M.Stop,'','', {type: held}]
+combos:
+  - {p: [1, 2], k: "Esc", l: ["BASE"]}
+  - {p: [11, 12], k: "BSpc", l: ["BASE"]}
+  - {p: [7, 8], k: "Esc", l: ["BASE"]}
+  - {p: [18, 19], k: ";", l: ["BASE"]}

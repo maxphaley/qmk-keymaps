@@ -4,3 +4,5 @@
 
 #define VIAL_UNLOCK_COMBO_ROWS { 4, 3 }
 #define VIAL_UNLOCK_COMBO_COLS { 3, 3 }
+
+#define VIAL_COMBO_ENTRIES 12
