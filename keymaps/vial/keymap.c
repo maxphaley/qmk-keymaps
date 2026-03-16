@@ -18,7 +18,6 @@
 #include QMK_KEYBOARD_H
 #include "keymap.h"
 
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
     KC_Q , KC_W , KC_E     , KC_R     , KC_T     , KC_Y     , KC_U     , KC_I     , KC_O   , KC_P    ,
@@ -33,16 +32,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         KC_NO   , KC_NO   , KC_NO , KC_MINS , KC_0 , KC_DOT
   ),
   [_SYM] = LAYOUT(
-    KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO , KC_LCBR , KC_AMPR , KC_ASTR , KC_LPRN , KC_RCBR ,
+    KC_NO   , KC_LCBR , KC_RCBR , KC_NO   , KC_NO , KC_LCBR , KC_AMPR , KC_ASTR , KC_LPRN , KC_RCBR ,
     KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO , KC_PLUS , KC_DLR  , KC_PERC , KC_CIRC , KC_COLN ,
-    KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO , KC_PIPE , KC_EXLM , KC_AT   , KC_HASH , KC_TILD ,
+    KC_NO   , KC_LBRC , KC_RBRC , KC_NO   , KC_NO , KC_PIPE , KC_EXLM , KC_AT   , KC_HASH , KC_TILD ,
                         KC_NO   , KC_NO   , KC_NO , KC_UNDS , KC_LPRN , KC_RPRN
   ),
   [_NAV] LAYOUT(
-    KC_PGUP , KC_HOME , KC_UP   , KC_END  , KC_INS  , KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
-    KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , CW_TOGG , KC_NO , KC_LSFT , KC_LCTL , KC_LALT , KC_LGUI ,
-    U_UND   , U_CUT   , U_CPY   , U_PST   , U_RDO   , KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
-                        KC_DEL  , KC_ENT  , KC_BSPC , KC_NO , KC_NO   , KC_NO
+    KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_PGUP , KC_HOME , KC_UP   , KC_END   , KC_NO   ,
+    KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO   , KC_PGDN , KC_LEFT , KC_DOWN , KC_RIGHT , KC_BSPC ,
+    U_UND   , U_CUT   , U_CPY   , U_PST   , U_RDO   , CW_TOGG , KC_ENT  , KC_NO   , KC_NO    , KC_DEL  ,
+                        KC_DEL  , KC_TAB  , KC_BSPC , KC_NO   , KC_NO   , KC_NO
   ),
   [_FUN] = LAYOUT(
     KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO , KC_PSCR , KC_F7  , KC_F8  , KC_F9 , KC_F12 ,
@@ -51,10 +50,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         KC_NO   , KC_NO   , KC_NO , KC_TAB  , KC_ENT , KC_APP
   ),
   [_MEDIA] = LAYOUT(
-    RGB_HUI , RGB_SAI , KC_VOLU , RGB_VAI , RGB_TOG , KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
-    RGB_MOD , KC_MPRV , KC_VOLD , KC_MNXT , KC_NO   , KC_NO , KC_LSFT , KC_LCTL , KC_LALT , KC_LGUI ,
-    KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
-                        KC_MUTE , KC_MPLY , KC_MSTP , KC_NO , KC_NO   , KC_NO
+    KC_NO , KC_NO   , KC_VOLU , KC_NO   , KC_BRIU , KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
+    KC_NO , KC_MPRV , KC_VOLD , KC_MNXT , KC_BRID , KC_NO , KC_LSFT , KC_LCTL , KC_LALT , KC_LGUI ,
+    KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
+                      KC_MUTE , KC_MPLY , KC_MSTP , KC_NO , KC_NO   , KC_NO
   )
 };
 
@@ -64,7 +63,7 @@ const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC
 
 // grave escape
 const key_override_t tilde_esc_override = ko_make_basic(MOD_MASK_SHIFT, KC_ESC, S(KC_GRV));
-const key_override_t grave_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC, KC_GRV);
+const key_override_t grave_esc_override = ko_make_basic(MOD_MASK_ALT, KC_ESC, KC_GRV);
 
 // brightness mapping
 const key_override_t brightness_up_override = ko_make_with_layers_negmods_and_options(MOD_MASK_ALT, KC_VOLU, KC_BRIU, 1<<_MEDIA, MOD_MASK_CSG, ko_option_no_reregister_trigger);
@@ -80,12 +79,14 @@ const key_override_t *key_overrides[] = {
 
 // ## Combos
 const uint16_t PROGMEM we_combo[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM l_quot_combo[] = {KC_L, KC_QUOT, COMBO_END};
+const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM comma_dot_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM l_quot_combo[] = {HM_L, HM_QUOT, COMBO_END};
 combo_t key_combos_UNSETTABLE_USING_VIAL[] = {
     COMBO(we_combo, KC_ESC),
-    COMBO(sd_combo, KC_BSPC),
-    COMBO(io_combo, KC_ESC),
+    COMBO(io_combo, KC_BSPC),
+    COMBO(xc_combo, KC_TAB),
+    COMBO(comma_dot_combo, KC_ENT),
     COMBO(l_quot_combo, KC_SCLN),
 };

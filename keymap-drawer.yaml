@@ -8,7 +8,7 @@ layers:
     - {h: FUN, t: Del}
     - {h: NUM, t: Space}
     - {h: SYM, t: Tab}
-    - {h: SYM, t: BSpace}
+    - {t: Shift}
     - {h: NAV, t: Enter}
     - {h: MEDIA, t: Esc}
   NUM:
@@ -17,27 +17,32 @@ layers:
     - ['','','','','',"\\", 1, 2, 3, '`']
     - ['',{type: held},'','-',0,.]
   SYM:
-    - ['','','','','','{', '&', '*', '(', '}']
+    - ['','{','}','','','{', '&', '*', '(', '}']
     - [Gui,Alt,Ctrl,Shift,'','+','$','%','^',':']
-    - ['','','','','',"|", '!', '@', '#', '~']
+    - ['','[',']','','',"|", '!', '@', '#', '~']
     - ['','',{type: held},'__','(',')']
   NAV:
-    - [PgUp, Home, UP, End, Insert,'','','','','']
-    - [PgDn, LEFT, DOWN, RIGHT, CapWord, '', Shift, Ctrl, Alt, Gui]
-    - [Undo, Cut, Copy, Paste, Redo, '','','','','']
-    - [Del,Ent,BSpace,'',{type: held},'']
+    - ['', '', '', '', '',PgUp,Home,'$$mdi:arrow-up$$',End,'']
+    - [Gui, Alt, Ctrl, Shift, PgDown, PgDn, '$$mdi:arrow-left$$', '$$mdi:arrow-down$$', '$$mdi:arrow-right$$', '$$mdi:backspace$$']
+    - [Undo, Cut, Copy, Paste, Redo, CapWord,Enter,'','',Del]
+    - [Del,Tab,'$$mdi:backspace$$','',{type: held},'']
   FUN:
     - ['','','','','',PrtSc, Fn7, Fn8, Fn9, Fn12]
     - [Gui,Alt,Ctrl,Shift,'',ScrlLock, Fn4, Fn5, Fn6, Fn11]
     - ['','','','','',Pause, Fn1, Fn2, Fn3, Fn10]
     - [{type: held},'','',Tab,Enter,App]
   MEDIA:
-    - [RGB, RGB, Vol+, RGB, RGB,'','','','','']
-    - [RGB, M.Prev, Vol-, M.Next, '', '', Shift, Ctrl, Alt, Gui]
+    - ['', '', Vol+, '', Bright+,'','','','','']
+    - ['', M.Prev, Vol-, M.Next, Bright-, '', Shift, Ctrl, Alt, Gui]
     - ['', '', '', '', '', '','','','','']
     - [Mute,M.Play,M.Stop,'','', {type: held}]
 combos:
   - {p: [1, 2], k: "Esc", l: ["BASE"]}
-  - {p: [11, 12], k: "BSpc", l: ["BASE"]}
-  - {p: [7, 8], k: "Esc", l: ["BASE"]}
+  - {p: [21, 22], k: Tab, l: ["BASE"]}
+  - {p: [7, 8], k: '$$mdi:backspace$$', l: ["BASE"]}
   - {p: [18, 19], k: ";", l: ["BASE"]}
+  - {p: [27, 28], k: Enter, l: ["BASE"]}
+draw_config:
+  n_columns: 2
+  outer_pad_w: 60.0
+  footer_text: mph353 keymap

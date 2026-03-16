@@ -38,6 +38,6 @@ enum layers {
 #define LTHUMB_L LT_FUN(KC_DEL)
 #define LTHUMB_M LT_NUM(KC_SPC)
 #define LTHUMB_R LT_SYM(KC_TAB)
-#define RTHUMB_L KC_BSPC
+#define RTHUMB_L KC_LSFT
 #define RTHUMB_M LT_NAV(KC_ENT)
 #define RTHUMB_R LT_MEDIA(KC_ESC)
